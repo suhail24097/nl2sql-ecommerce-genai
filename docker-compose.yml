@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: ecommerce_postgres
+    environment:
+      POSTGRES_DB: ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
+      - ./data/seed_data.sql:/docker-entrypoint-initdb.d/2_seed_data.sql
+      - ./data/ecommerce_dataset_10000.csv:/data/ecommerce_dataset_10000.csv
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"

@@ -1,0 +1,17 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Docker
+*.log
+
+# Neo4j / Docker volumes
+data/neo4j/
+
+# OS files
+.DS_Store
+Thumbs.db
